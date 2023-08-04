@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import html2canvas from 'html2canvas'
 import './App.css';
+import { memesData } from './dataImages';
 
 function App() {
   const [headline, setHeadline] = useState('')
   const [footerline, setFooterline] = useState('')
   const [image, setImage] = useState('')
+
+  console.log('memes: ',memesData);
 
   const headlineHandler = (event) => {
     setHeadline(event.target.value)
@@ -32,8 +35,10 @@ function App() {
   
   return (
     <div className="App">
+      
       {/* Select picker from memes */}
       <select onChange={imageHandler}
+        placeholder='select meme'
         style={{
           margin: '10px 7px', 
           padding:'3px', 
@@ -69,7 +74,7 @@ function App() {
         >fill all items to continue</span>
     }
       <div 
-        id='capture' 
+         
         style={{
         width: 'fit-content',
         maxWidth:'50%',
