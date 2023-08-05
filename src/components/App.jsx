@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
-import InputFields from './InputFields';
-import Overlay from './Overlay';
-import PreviewMeme from './PreviewMeme';
-
+import { useEffect, useState } from "react";
+import InputFields from "./InputFields";
+import Overlay from "./Overlay";
+import PreviewMeme from "./PreviewMeme";
 
 // Async Function to get all empty Memes available
 async function getPreviewTemplates(setter) {
   try {
-    const response = await fetch('https://api.memegen.link/templates/');
+    const response = await fetch("https://api.memegen.link/templates/");
     const body = await response.json();
-    setter(body.map((item) => item.blank.split('.png')[0].split('/')[4]));
+    setter(body.map((item) => item.blank.split(".png")[0].split("/")[4]));
   } catch (error) {
     console.log(error);
   }
@@ -21,13 +20,13 @@ export default function App() {
   // Switch between Overlay active and hidden
   const [overlayHidden, setOverlayHidden] = useState(true);
   // Save the name of the chosen meme
-  const [chosenMeme, setChosenMeme] = useState('');
+  const [chosenMeme, setChosenMeme] = useState("");
   // Save the top text
-  const [topText, setTopText] = useState('');
+  const [topText, setTopText] = useState("");
   // Save the bottom text
-  const [bottomText, setBottomText] = useState('');
+  const [bottomText, setBottomText] = useState("");
   // Save the complete meme URL of the generated meme
-  const [memeUrl, setMemeUrl] = useState('');
+  const [memeUrl, setMemeUrl] = useState("");
 
   // Use useEffect to setTemplateNames after the fetch is resolved
   useEffect(() => {
@@ -37,6 +36,7 @@ export default function App() {
   return (
     <>
       <h1>Meme Generator</h1>
+
       <InputFields
         setOverlayHidden={setOverlayHidden}
         topText={topText}
@@ -55,7 +55,6 @@ export default function App() {
         setChosenMeme={setChosenMeme}
         setMemeUrl={setMemeUrl}
       />
-      
     </>
   );
 }

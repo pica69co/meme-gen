@@ -1,5 +1,9 @@
 // import html2canvas from 'html2canvas';
 import Footer from './Footer';
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
+import 'bootstrap'
+import { useState } from 'react';
+import Help from './Help';
 // Helper function for escaping not allowed Character in the URL for the api call
 function escapingCharacters(item) {
   if (item === ' ') {
@@ -65,13 +69,50 @@ function download(downloadUrl, fileText, event) {
 
 
 export default function InputFields(props) {
-  const restart = ()=>{
-    window.location.reload(true)
+    const [modal, setModal] = useState(false)
+
+    const restart = ()=>{
+     window.location.reload(true)
+    
+  }
+
+    const handlerChooseMeme = ()=>{
+    props.memeUrl ? alert('Something went wrong! try again...') : 
+    props.setOverlayHidden(false)
+
   }
   
+  const handleModal = () => {
+    setModal(!modal)
+  }
+
+  const modalStyles = {
+    position: "fixed",
+    zIndex:"10",
+    margin: "auto",
+    background:"#fff", 
+    top: "1.25%",
+    left: "10.60%",
+    borderRadius:"5px",
+    boxShadow:"10px 10px 5px 0px rgba(0,0,0,0.75)",
+        
+  }
+
   return (
     <div className="inputFields">
-      <div id='capture'>
+      <Button 
+      style={
+        {
+          width:'fit-content',
+          height:'fit-content',
+          marginLeft:'85%',
+          fontWeight:'bold',
+          padding:'13px'
+        }
+    } 
+      onClick={handleModal}
+      >?</Button> 
+      <div>
         <label htmlFor="topText">Top Text</label>
         <input
           id="topText"
@@ -98,7 +139,7 @@ export default function InputFields(props) {
         />
       </div>
       
-      <button onClick={() => props.setOverlayHidden(false)}>Choose Meme</button>
+      <button onClick={handlerChooseMeme }>Choose Meme</button>
       <button
         onClick={() =>
           props.setMemeUrl(
@@ -114,6 +155,35 @@ export default function InputFields(props) {
       <button onClick={restart}>
         New meme
       </button>
+      <Modal isOpen={modal} style={modalStyles}>
+        <ModalHeader style={
+            { textAlign:'center',
+              fontSize:'1.5rem',
+            }
+        }>
+            Help
+        </ModalHeader>
+
+        <ModalBody style={
+            {
+              justifyContent:'center', 
+              textAlign:'justify',
+              padding:'1.5px',
+              marginLeft:'5px'  
+            }
+        }>
+            <Help/>
+        </ModalBody>
+
+        <ModalFooter style={
+                        {margin:'30px 100px 0px 115px'}
+                    }>
+            <Button
+            style={{width:'fit-content'}}
+            onClick={handleModal}
+            >Close</Button>
+        </ModalFooter>
+    </Modal>
       <Footer />
     </div>
   );
