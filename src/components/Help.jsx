@@ -11,7 +11,7 @@ const Help = () => {
       }}
     >
       <p style={{ color: "#1a1a1a", fontWeight: "500", fontSize: "1.2rem" }}>
-        Step 1: Choose a meme. <br />
+        Step 1: Choose your favorite meme. <br />
         Step 2: Enter the text you want.
         <br />
         Step 3: Create meme. <br />

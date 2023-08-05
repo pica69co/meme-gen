@@ -64,10 +64,6 @@ function download(downloadUrl, fileText, event) {
     //   })
  }
 
-
-
-
-
 export default function InputFields(props) {
     const [modal, setModal] = useState(false)
 
@@ -77,8 +73,7 @@ export default function InputFields(props) {
   }
 
     const handlerChooseMeme = ()=>{
-    props.memeUrl ? alert('Something went wrong! try again...') : 
-    props.setOverlayHidden(false)
+      props.setOverlayHidden(false)
 
   }
   
