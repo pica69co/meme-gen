@@ -100,8 +100,11 @@ export default function InputFields(props) {
         {
           width:'fit-content',
           height:'fit-content',
-          marginLeft:'85%',
+          marginLeft:'95%',
+          fontSize:'18px',
           fontWeight:'bold',
+          border:'1px solid',
+          borderRadius:'40%',
           padding:'13px'
         }
     } 
